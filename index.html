@@ -716,8 +716,11 @@
             }
 
             onEachParcel(feature, layer) {
+                // Get center coordinates of the feature for street view
+                const center = layer.getBounds().getCenter();
+                
                 // Create popup content
-                const popupContent = this.createPopupContent(feature.properties);
+                const popupContent = this.createPopupContent(feature.properties, center);
                 layer.bindPopup(popupContent);
 
                 // Add hover effects
@@ -736,7 +739,7 @@
                 });
             }
 
-            createPopupContent(properties) {
+            createPopupContent(properties, center) {
                 let content = '<div class="popup-content">';
                 content += '<h4>Parcel Information</h4>';
                 
@@ -791,6 +794,15 @@
                     }
                     content += `</div>`;
                 });
+                
+                // Add Street View button if coordinates are available
+                if (center && center.lat && center.lng) {
+                    const streetViewUrl = `https://www.google.com/maps?layer=c&cbll=${center.lat},${center.lng}&cbp=12,0,0,0,0`;
+                    content += `<div style="margin-top: 10px; text-align: center;">`;
+                    content += `<a href="${streetViewUrl}" target="_blank" class="btn btn-primary" style="font-size: 0.9em; padding: 5px 10px;">`;
+                    content += `<span style="margin-right: 5px;">🚶</span> Open Street View</a>`;
+                    content += `</div>`;
+                }
                 
                 content += '</div>';
                 return content;
