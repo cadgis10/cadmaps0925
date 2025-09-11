@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CADGIS Parcel Viewer</title>
+    <title>GIS Parcel Viewer</title>
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -274,8 +274,8 @@
 </head>
 <body>
     <div class="header">
-        <h1>🗺️ CADGIS Parcel Viewer</h1>
-       <!--  <p>Interactive mapping system for shapefile parcel data visualization</p> -->
+        <h1>🗺️ CDOGIS Parcel Viewer</h1>
+        
     </div>
 
     <div class="controls">
@@ -759,7 +759,9 @@
                     { key: 'PIN_NEW', label: 'PIN NEW' },
                     { key: 'Barangay', label: 'Barangay' },
                     { key: 'PrevTD', label: 'PrevTD' },
-                    { key: 'PrevPIN', label: 'PrevPIN' }
+                    { key: 'PrevPIN', label: 'PrevPIN' },
+                    { key: 'AREA1', label: 'AREA1(has.)' },
+                    { key: 'AREA2', label: 'AREA2(sqm.)' }
                 ];
                 
                 fieldsToShow.forEach(field => {
@@ -1192,5 +1194,3 @@
     </script>
 </body>
 </html>
-
-
